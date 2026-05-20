@@ -2,6 +2,7 @@ package com.asifkamal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -23,5 +24,15 @@ public class Main {
                 new Person("Charlie", "Brown"),
                 new Person("Peppermint", "Patty")
         ));
+
+        //using anonymous class
+        var comparatorLastName = new Comparator<Person>() {
+
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.lastName().compareTo(o2.lastName());
+            }
+        };
+
     }
 }
