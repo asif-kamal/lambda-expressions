@@ -37,5 +37,25 @@ public class Main {
         //anonymous class inside sort method
         people.sort((o1, o2) -> o1.lastName().compareTo(o2.lastName()));
         System.out.println(people);
+
+        interface EnhancedComparator<T> extends Comparator<Person> {
+            int secondLevel(T o1, T o2);
+        }
+        var comparatorMixed = new EnhancedComparator<Person>() {
+
+            @Override
+            public int compare(Person o1, Person o2) {
+                int result = o1.lastName().compareTo(o2.lastName());
+                return result != 0 ? result : secondLevel(o1, o2);
+            }
+
+            @Override
+            public int secondLevel(Person o1, Person o2) {
+                return o1.firstName().compareTo(o2.firstName());
+            }
+        };
+
+        people.sort(comparatorMixed);
+        System.out.println(people);
     }
 }
