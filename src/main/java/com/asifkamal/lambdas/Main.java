@@ -15,6 +15,11 @@ public class Main {
         System.out.println("----------------");
         //lambda expression
         list.forEach(s -> System.out.println(s));
+        System.out.println("---------------");
+        list.forEach((var myString) -> {
+            char first = myString.charAt(0);
+            System.out.println(myString + " means " + first);
+        });
         //method reference
         System.out.println("---------------");
         list.forEach(System.out::println);
