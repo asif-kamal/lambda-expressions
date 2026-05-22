@@ -1,7 +1,10 @@
 package com.asifkamal.lambdas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 
 public class Main {
 
@@ -28,11 +31,27 @@ public class Main {
         list.forEach(System.out::println);
 
         int result = calculator((a, b) -> a + b, 5, 2);
+        int result2 = calculator((a, b) -> a / b, 5, 2);
+
+        var coords = Arrays.asList(
+                new double[]{47.2160, -95.2348},
+                new double[]{29.1566, -89.2495},
+                new double[]{35.1556, -90.0659}
+        );
+
+        coords.forEach(s -> System.out.println(Arrays.toString(s)));
+
+        BiConsumer<Double, Double> p1 = (lat, lng) ->
+                System.out.printf("[lat:%.3f lng:%.3f]%n", lat, lng);
     }
 
-    public static <T> T calculator(Operation<T> function, T first, T second) {
-        T result = function.operate(first, second);
+    public static <T> T calculator(BinaryOperator<T> function, T first, T second) {
+        T result = function.apply(first, second);
         System.out.println("Result: " + result);
         return result;
+    }
+
+    public static <T> void processPoint(T t1, T t2, BiConsumer<T, T> consumer) {
+        consumer.accept(t1, t2);
     }
 }
