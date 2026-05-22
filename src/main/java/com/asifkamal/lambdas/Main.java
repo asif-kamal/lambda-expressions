@@ -16,12 +16,23 @@ public class Main {
         //lambda expression
         list.forEach(s -> System.out.println(s));
         System.out.println("---------------");
+
+        String prefix = "nato";
         list.forEach((var myString) -> {
             char first = myString.charAt(0);
-            System.out.println(myString + " means " + first);
+            System.out.println(prefix + " " + myString + " means " + first);
         });
+
         //method reference
         System.out.println("---------------");
         list.forEach(System.out::println);
+
+        int result = calculator((a, b) -> a + b, 5, 2);
+    }
+
+    public static <T> T calculator(Operation<T> function, T first, T second) {
+        T result = function.operate(first, second);
+        System.out.println("Result: " + result);
+        return result;
     }
 }
