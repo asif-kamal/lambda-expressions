@@ -43,6 +43,15 @@ public class Main {
 
         BiConsumer<Double, Double> p1 = (lat, lng) ->
                 System.out.printf("[lat:%.3f lng:%.3f]%n", lat, lng);
+        System.out.println("------------------------");
+
+        coords.forEach(s -> processPoint(s[0], s[1], p1));
+
+        list.removeIf(s -> s.equalsIgnoreCase("bravo"));
+        list.forEach(s -> System.out.println(s));
+
+        var firstPoint = coords.get(0);
+        processPoint(firstPoint[0], firstPoint[1], p1);
     }
 
     public static <T> T calculator(BinaryOperator<T> function, T first, T second) {
