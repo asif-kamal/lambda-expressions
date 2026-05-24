@@ -50,6 +50,14 @@ public class Main {
         list.removeIf(s -> s.equalsIgnoreCase("bravo"));
         list.forEach(s -> System.out.println(s));
 
+        list.addAll(List.of("echo", "easy", "earnest"));
+        list.forEach(s -> System.out.println(s));
+
+        System.out.println("------------------------");
+        list.removeIf(s -> s.startsWith("ea"));
+        list.forEach(System.out::println);
+
+
         var firstPoint = coords.get(0);
         processPoint(firstPoint[0], firstPoint[1], p1);
     }
