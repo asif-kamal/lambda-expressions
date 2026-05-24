@@ -57,6 +57,26 @@ public class Main {
         list.removeIf(s -> s.startsWith("ea"));
         list.forEach(System.out::println);
 
+        list.replaceAll(s -> s.charAt(0) + " - " + s.toUpperCase());
+        System.out.println("------------------------");
+        list.forEach(System.out::println);
+
+        String[] emptyStrings = new String[10];
+        System.out.println(Arrays.toString(emptyStrings));
+        Arrays.fill(emptyStrings, " ");
+        System.out.println(Arrays.toString(emptyStrings));
+        Arrays.setAll(emptyStrings, (i) -> "" + (i + 1) + ". ");
+        System.out.println(Arrays.toString(emptyStrings));
+
+        Arrays.setAll(emptyStrings, (i) -> "" + (i + 1) + ". "
+            + switch (i) {
+            case 0 -> "One";
+            case 1 -> "Two";
+            case 2 -> "Three";
+            default -> "";
+                }
+        );
+        System.out.println(Arrays.toString(emptyStrings));
 
         var firstPoint = coords.get(0);
         processPoint(firstPoint[0], firstPoint[1], p1);
