@@ -3,8 +3,10 @@ package com.asifkamal.lambdas;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
+import java.util.function.Supplier;
 
 public class Main {
 
@@ -80,6 +82,13 @@ public class Main {
 
         var firstPoint = coords.get(0);
         processPoint(firstPoint[0], firstPoint[1], p1);
+
+        String[] names = {"Ann", "Bob", "Carol", "David", "Ed", "Fred"};
+        String[] randomList = randomlySelectedValues(
+                15, names, () -> new Random().nextInt(0, names.length));
+
+        System.out.println(Arrays.toString(randomList));
+
     }
 
     public static <T> T calculator(BinaryOperator<T> function, T first, T second) {
@@ -90,5 +99,13 @@ public class Main {
 
     public static <T> void processPoint(T t1, T t2, BiConsumer<T, T> consumer) {
         consumer.accept(t1, t2);
+    }
+
+    public static String[] randomlySelectedValues(int count, String[] values, Supplier<Integer> s) {
+        String [] selectedValues = new String[count];
+        for (int i = 0; i < count; i++) {
+            selectedValues[i] = values[s.get()];
+        }
+        return selectedValues;
     }
 }
