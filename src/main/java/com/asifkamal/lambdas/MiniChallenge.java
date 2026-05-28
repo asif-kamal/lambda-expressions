@@ -23,6 +23,11 @@ public class MiniChallenge {
 
     };
 
+    public static String everySecondCharacter(Function<String, String> func, String source) {
+        return func.apply(source);
+
+    }
+
     public static void main(String[] args) {
         printTheParts.accept("This is a mini challenge");
 
