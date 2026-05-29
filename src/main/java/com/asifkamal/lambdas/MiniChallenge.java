@@ -5,6 +5,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class MiniChallenge {
@@ -28,12 +29,16 @@ public class MiniChallenge {
 
     }
 
+    static Supplier<String> iLoveJava = () -> "I love Java";
+
     public static void main(String[] args) {
         printTheParts.accept("This is a mini challenge");
 
         System.out.println(everySecondChar.apply("1234567890"));
 
         System.out.println(everySecondCharacter(everySecondChar, "1234567890"));
+
+        System.out.println(iLoveJava);
 
     }
 
