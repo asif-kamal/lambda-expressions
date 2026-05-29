@@ -38,7 +38,7 @@ public class MiniChallenge {
 
         System.out.println(everySecondCharacter(everySecondChar, "1234567890"));
 
-        System.out.println(iLoveJava);
+        System.out.println(iLoveJava.get());
 
     }
 
