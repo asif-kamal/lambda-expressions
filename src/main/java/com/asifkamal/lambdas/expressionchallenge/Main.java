@@ -1,7 +1,8 @@
 package com.asifkamal.lambdas.expressionchallenge;
 
-import java.lang.reflect.Array;
+
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -15,5 +16,19 @@ public class Main {
         Arrays.setAll(names, i -> names[i].toUpperCase());
         System.out.println("--> Transform to Uppercase");
         System.out.println(Arrays.toString(names));
+
+        List<String> backedByArray = Arrays.asList(names);
+
+        backedByArray.replaceAll(s -> s + " " + getRandomChar('A', 'D') + ".");
+        System.out.println("--> Add random initial");
+        System.out.println(Arrays.toString(names));
+    }
+
+    public static char getRandomChar(char startChar, char endChar) {
+        return (char) random.nextInt((int) startChar, (int) endChar + 1);
+    }
+
+    private static String getReversedName(String firstName) {
+        return new StringBuilder(firstName).reverse().toString();
     }
 }
