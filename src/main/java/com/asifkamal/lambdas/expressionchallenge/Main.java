@@ -19,9 +19,13 @@ public class Main {
 
         List<String> backedByArray = Arrays.asList(names);
 
-        backedByArray.replaceAll(s -> s + " " + getRandomChar('A', 'D') + ".");
+        backedByArray.replaceAll(s -> s += " " + getRandomChar('A', 'D') + ".");
         System.out.println("--> Add random initial");
         System.out.println(Arrays.toString(names));
+
+        backedByArray.replaceAll(s -> s += " " + getReversedName(s.split(" ")[0]));
+        System.out.println("--> Add reversed name as last name");
+        Arrays.asList(names).forEach(System.out::println);
     }
 
     public static char getRandomChar(char startChar, char endChar) {
